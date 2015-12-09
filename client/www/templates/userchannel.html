@@ -1,0 +1,30 @@
+<!-- 
+<div class="md-modal md-effect-13" id="modal-13">
+			<div class="md-content">
+				<div> -->
+	                 <h1> vide box </h1>
+	   
+<div id="vid-box"><!-- Stream goes here --></div>
+
+<form name="streamForm" id="stream" action="#" ng-submit='submit()' onsubmit="return stream(this);">
+    <input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!" />
+    <input type="submit" name="stream_submit" value="Stream"> 
+    <div id="stream-info">Watching: <span id="here-now">0</span></div>
+</form>
+
+<form name="watchForm" id="watch" action="#" onsubmit="return watch(this);">
+	<input type="text" name="number" placeholder="Enter stream to join!" />
+	<input type="submit" value="Watch"/>
+</form>
+
+<div id="inStream">
+	<button id="end" onclick="end()">Done</button> <br>
+	Generate Embed: <button onclick="genEmbed(400,600)">Tall</button><button onclick="genEmbed(600,400)">Wide</button><button onclick="genEmbed(500,500)">Square</button><br>
+	<div id="embed-code"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="js/webrtc.js"></script>
+<script src="http://cdn.pubnub.com/webrtc/rtc-controller.js"></script>
+<script src="js/videobroadcast.js"></script>

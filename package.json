@@ -1,0 +1,11 @@
+{
+  "name": "meanstackintro",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-resource": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.11"
+  }
+}
