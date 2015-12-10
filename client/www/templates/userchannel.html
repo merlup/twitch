@@ -1,17 +1,62 @@
-<!-- 
-<div class="md-modal md-effect-13" id="modal-13">
-			<div class="md-content">
-				<div> -->
-	                 <h1> vide box </h1>
-	   
-<div id="vid-box"><!-- Stream goes here --></div>
 
-<form name="streamForm" id="stream" action="#" ng-submit='submit()' onsubmit="return stream(this);">
-    <input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!" />
-    <input type="submit" name="stream_submit" value="Stream"> 
-    <div id="stream-info">Watching: <span id="here-now">0</span></div>
-</form>
 
+
+<div class="container-fluid">
+	<div class="row">
+		<div ng-controller="userchannelCtrl">
+			<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
+		</div>
+		<div class="leftcolumn col-md-4">
+			<div id="vid-box"><!-- Stream goes here -->
+			</div>
+			<form name="streamForm" id="stream" action="#" ng-submit='submit()' onsubmit="return stream(this);">
+			    <input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!" />
+			    <button name="stream_submit" action="submit()"></button>
+			    <div id="stream-info">Watching: <span id="here-now">0</span></div>
+			</form>
+			<div class="row">
+				<div class="chat"> <!--- Chat Goes Here --></div>
+				</div>
+			</div>
+		</div>
+		<div class="gamewindow col-md-8">
+			<div> Game window </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="channelblog col-md-12">
+			<div class="aboutme">
+				<h3> About Me </h3>
+				<p> This is the about me section </p>
+			</div>
+			
+		<div ng-controller="postsController">
+			<h3> latest posts </h3>
+			<div class="blog_posts">
+				<li ng-repeat="blog_post in blog_posts">
+					<h1>{{blog_post.title}}</h1>
+					<p>{{blog_post.description}}</p>
+					<p>Tags: {{blog_post.tags_array.toString()}}</p>
+					<img ng-src="{{blog_post.image}}" />
+            		<td><button ng-click="deleteBlogPost(blog_post)"> Delete {{blog_post.title}}</button></td>
+        		</li>
+        	</div>
+        	<div class="createpost">	
+				<form ng-submit="createBlogPost()">
+					<input type="text" placeholder="Blog_Post title" ng-model="blog_postTitle"></input>
+					<input type="text" placeholder="Blog_Post description" ng-model="blog_postDescription"></input>
+					<input type="text" placeholder="Blog_Post tags" ng-model="blog_postTags"></input> 
+					<input type="text" placeholder="Blog_Post author" ng-model="blog_postAuthor"></input>
+					<button type="submit"> ADD </button>
+				</form>
+			</div>
+			<br>
+		</div>
+	</div>
+
+
+
+<h3> Watch this channel </h3>
 <form name="watchForm" id="watch" action="#" onsubmit="return watch(this);">
 	<input type="text" name="number" placeholder="Enter stream to join!" />
 	<input type="submit" value="Watch"/>
@@ -26,5 +71,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
 <script src="js/webrtc.js"></script>
-<script src="http://cdn.pubnub.com/webrtc/rtc-controller.js"></script>
+<script src="js/rtc-controller.js"></script>
 <script src="js/videobroadcast.js"></script>

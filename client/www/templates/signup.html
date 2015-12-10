@@ -1,3 +1,43 @@
 <div ng-controller="signupCtrl">
 	<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
+
+
+	<form name="signupForm" id="signup" action="#" ng-submit='createUser()'>
+
+	<div class="form-group">
+      <input class="form-control" type="text" ng-model="userEmail" placeholder="Email Address" required/>
+		<div class="alert alert-danger"
+	    	ng-show="signupForm.email.$error.required && signupForm.email.$dirty">
+	    	Please enter your email!
+	  	</div>
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" type="text" ng-model="userUsername" placeholder="Username" required/>
+		<div class="alert alert-danger"
+	    	ng-show="signupForm.username.$error.required">
+	    	Please pick a username!
+	  	</div>
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" type="text" ng-model="userPassword" placeholder="Password" required/>
+		<div class="alert alert-danger"
+	    	ng-show="signupForm.password.$error.required">
+	    	Please enter a password!
+	  	</div>
+    </div>
+		
+		<div class="form-group">
+			<input class="form-control" type="text" ng-model="userPasswordconfirm" id="passwordconfirm" placeholder="Password Confirmation" required/>
+			<div class="alert alert-danger"
+	    	ng-show="signupForm.passwordconfirm.$error.required">
+	    		Please confirm your password!
+	  		</div>
+	  	</div>
+		
+	
+		<button type="submit"> Sign Up</button> 
+	</form>
+
 </div>

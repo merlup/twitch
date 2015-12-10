@@ -1,3 +1,23 @@
+
+		<div ng-controller="postsController">
+				<li ng-repeat="blog_post in blog_posts">
+					<h1>{{blog_post.title}}</h1>
+					<p>{{blog_post.description}}</p>
+					<p>Tags: {{blog_post.tags_array.toString()}}</p>
+					<img ng-src="{{blog_post.image}}" />
+            		<td><button ng-click="deleteBlogPost(blog_post)"> Delete {{blog_post.title}}</button></td>
+        		</li>	
+		</div>
+			<form ng-submit="createBlogPost()">
+				<input type="text" placeholder="Blog_Post title" ng-model="blog_postTitle"></input>
+				<input type="text" placeholder="Blog_Post description" ng-model="blog_postDescription"></input>
+				<input type="text" placeholder="Blog_Post tags" ng-model="blog_postTags"></input> 
+				<input type="text" placeholder="Blog_Post author" ng-model="blog_postAuthor"></input>
+				<button type="submit"> ADD </button>
+			</form>
+	</div>
+
+
 <div ng-controller="profileCtrl">
 	<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
 </div>

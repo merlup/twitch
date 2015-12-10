@@ -1,3 +1,12 @@
+
+
+
+
 <div ng-controller="channelsCtrl">
 	<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
 </div>
+
+<form name="watchForm" id="watch" action="#" onsubmit="return watch(this);">
+	<input type="text" name="number" placeholder="Enter stream to join!" />
+	<input type="submit" value="Watch"/>
+</form>

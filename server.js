@@ -2,9 +2,18 @@ var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	mongoose   = require('mongoose');
+	usersController = require('./server/controllers/users-controller');
+	postsController = require('./server/controllers/posts-controller');
+
+
+mongoose.connect('mongodb://localhost:27017/WebApp');
 
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/css', express.static(__dirname + '/client/css'));
+app.get('/api/users', usersController.list);
+app.post('/api/users', usersController.create);
+app.get('/api/blog_posts/', postsController.list);
+app.post('/api/blog_posts', postsController.create);
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/client/www/templates/');
 });

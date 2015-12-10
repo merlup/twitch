@@ -1,3 +1,11 @@
 <div ng-controller="loginCtrl">
 	<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
+
+
+	<form name="loginForm" id="login" action="#" ng-submit='submit()'>
+		<input type="text" name="username" id="username" placeholder="Username">
+		<input type="text" name="password" id="password" placeholder="Password">
+		<input type="submit" name="login_submit"> 
+	</form>
+
 </div>
