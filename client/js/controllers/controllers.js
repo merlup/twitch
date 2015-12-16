@@ -1,27 +1,28 @@
-angular.module('webApp').controller('indexCtrl', ['$scope', function($scope) {
+var app = angular.module('webApp');
+
+app.controller('indexCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'crazy'
 	];
 }]);
-
-angular.module('webApp').controller('channelsCtrl', ['$scope', function($scope) {
+app.controller('channelsCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'channels'
 	];
 }]);
-angular.module('webApp').controller('livenowCtrl', ['$scope', function($scope) {
+app.controller('livenowCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'livenow'
 	];
 }]);
-angular.module('webApp').controller('loginCtrl', ['$scope', function($scope) {
+app.controller('loginCtrl', ['$scope', function($scope) {
 	
 
 	$scope.messages = [
 	'login'
 	];
 }]);
-angular.module('webApp').controller('signupCtrl', ['$scope', '$resource', function($scope, $resource) {
+app.controller('signupCtrl', ['$scope', '$resource', function($scope, $resource) {
 	var User = $resource('/api/users');
 
 	User.query(function (results) {
@@ -50,22 +51,69 @@ angular.module('webApp').controller('signupCtrl', ['$scope', '$resource', functi
 	'signup'
 	];
 }]);
-angular.module('webApp').controller('userchannelCtrl', function($scope) {
+app.controller('userchannelCtrl', function($scope) {
 	$scope.messages = [
 	'userchannel'
 	];
 });
-angular.module('webApp').controller('mainCtrl', ['$scope', function($scope) {
+app.controller('mainCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'main'
 	];
+
+	$scope.topchannels = [
+	'topchan1',
+	'topchan2',
+	'topchan3',
+	'topchan4',
+	];
+
 }]);
-angular.module('webApp').controller('profileCtrl', ['$scope', function($scope) {
+
+app.controller('menu1Ctrl', ['$scope', function($scope) {
+	$scope.livenow = [
+	{ name: 'user1',
+	status: 'online'
+	},
+	{ name: 'user2',
+	status: 'online'
+	},
+	{ name: 'user3',
+	status: 'online'
+	},
+	{ name: 'user4',
+	status: 'online'
+	},
+	{ name: 'user5',
+	status: 'online'
+	}
+	];
+}]);
+app.controller('menu2Ctrl', ['$scope', function($scope) {
+$scope.livenow = [
+{ name: 'user6',
+	status: 'offline'
+	},
+	{ name: 'user7',
+	status: 'online'
+	},
+	{ name: 'user8',
+	status: 'offline'
+	},
+	{ name: 'user9',
+	status: 'online'
+	},
+	{ name: 'user10',
+	status: 'offline'
+	}
+	];
+}]);
+app.controller('profileCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'profile'
 	];
 }]);
-angular.module('webApp').controller('postsController', ['$scope', '$resource', function ($scope, $resource) {
+app.controller('postsController', ['$scope', '$resource', function ($scope, $resource) {
   
   var BlogPost = $resource('/api/blog_posts');
 

@@ -1,0 +1,22 @@
+<div class="row">
+	<ul>
+		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5" class='topchan col-md-2'>
+		<p>Image</p>
+		</li>
+		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5" class='topchantext col-md-2'>
+		<span class="channame">{{users.name}}</span>
+		<span class="chanstatus">{{users.status}}</span>
+		</li>
+	</ul>
+</div>
+<div class="row">
+	<ul>
+		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5:5" class='topchan col-md-2'>
+		<p>Image</p>
+		</li>
+		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5:5" class='topchantext col-md-2'>
+		<span class="channame">{{users.name}}</span>
+		<span class="chanstatus">{{users.status}}</span>
+		</li>
+	</ul>
+</div>

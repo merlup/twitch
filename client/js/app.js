@@ -1,47 +1,66 @@
-var app = angular.module('webApp', ['ngRoute', 'ngResource']);
+var app = angular.module('webApp', ['ui.router', 'ngResource']);
 
-app.config(function($routeProvider, $locationProvider) {
-  $routeProvider
-  .when('/index', {
-    template: 'index',
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+   
+  $stateProvider
+  .state('/', {
+    url: '/index',
+    templateUrl: '/index',
     controller: 'indexCtrl'
   })
-  .when('/main', {
+  .state('/main', {
+    url: '/main',
     templateUrl: 'main',
     controller:   'mainCtrl'
   })
-  .when('/login', {
+  .state('/main.menu1', {
+    url: '/menu1',
+    templateUrl: "menu1",
+    controller: 'menu1Ctrl'
+  })
+  .state('/main.menu2', {
+    url: '/menu2',
+    templateUrl: "menu2",
+    controller: 'menu2Ctrl'
+  })
+  .state('/login', {
+    url: '/login',
     templateUrl: 'login',
     controller:   'loginCtrl'
   })
-  .when('/channels', {
-    templateUrl: 'channels',
+  .state('/channels', {
+    url: '/channels',
+    templateUrl: '/channels',
     controller:   'channelsCtrl'
   })
-  .when('/livenow', {
-    templateUrl: 'livenow',
+  .state('/livenow', {
+    url: '/livenow',
+    templateUrl: '/livenow',
     controller:   'livenowCtrl'
   })
-  .when('/signup', {
-    templateUrl: 'signup',
+  .state('/signup', {
+    url: '/signup',
+    templateUrl: '/signup',
     controller:   'signupCtrl'
   })
-  .when('/userchannel', {
-    templateUrl: 'userchannel',
+  .state('/userchannel', {
+    url: '/userchannel',
+    templateUrl: '/userchannel',
     controller:   'userchannelCtrl'
   })
-  .when('/profile', {
-    templateUrl: 'profile',
+  .state('/profile', {
+    url: '/profile',
+    templateUrl: '/profile',
     controller:   'profileCtrl'
   });
-
+  $urlRouterProvider.otherwise("/");
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
   });
 
 
-  $routeProvider.otherwise({redirectTo: 'index'});
+  
   // if none of the above states are matched, use this as the fallback
 
   });

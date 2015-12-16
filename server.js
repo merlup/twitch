@@ -41,6 +41,12 @@ app.get('/livenow', function (req, res) {
 app.get('/channels', function (req, res) {
 	res.sendFile(__dirname + '/client/www/templates/channels.html');
 });
+app.get('/menu1', function (req, res) {
+	res.sendFile(__dirname + '/client/www/templates/menu1.html');
+});
+app.get('/menu2', function (req, res) {
+	res.sendFile(__dirname + '/client/www/templates/menu2.html');
+});
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -49,6 +55,6 @@ app.use(bodyParser.json());
 
 
 
-app.listen(3000, function() {
+app.listen(8080, function() {
 	console.log('I\'m Listening...');
 })

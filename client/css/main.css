@@ -1,3 +1,123 @@
+nav {
+	text-align: center;
+	float: right;
+}
+nav li {
+	display: inline-block;
+	padding: 10px;
+}
+
+.nopadding {
+   padding: 0 !important;
+  }
+
+.nomargin {
+	margin: 0 !important;
+}
+.headline {
+	text-align: center;
+}
 .section1 {
 	background-color: grey; 
+}
+.sectmainbox {
+	margin-top: 20px;
+}
+
+.leftpanels {
+	background-color: black;
+	text-align: center;
+	padding: 0px;
+	height: 400px;
+}
+
+.usercam {
+	height: 200px;
+	width: 100%;
+	background-color: blue;
+	padding: 0px;
+
+}
+
+.chat {
+	height: 200px;
+	width: 100%;
+	background-color: white;
+	margin-left: 15px;
+}
+
+.gameview {
+	height: 400px;
+	background-color: green;
+
+}
+
+.maintopchan {
+	text-align: center;
+}
+
+.maintopchan li {
+	display: inline-block;
+	margin: 10px;
+}
+
+.topchan {
+	background-color: orange;
+	height: 80px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.topchantext {
+	margin-bottom: 20px;
+	color: white;
+}
+
+.channame {
+	float: left;
+}
+
+.chanstatus {
+	float: right;
+}
+
+.section2 {
+	background-color: black;
+	text-align: center;
+}
+
+.section2nav {
+
+}
+
+.mainonline {
+	margin-left: 150px;
+}
+
+.mainonline li {
+	margin-left: 10px;
+	list-style-type: none;
+}
+
+.footer {
+	height: 400px;
+	text-align: center;
+	background-color: grey;
+}
+
+.footer1 {
+	margin-top: 50px;
+	margin-left: 50px;
+	background-color: black;
+	height: 300px;
+}
+.footer2 {
+	margin-top: 50px;
+	background-color: black;
+	height: 300px;
+}
+.footer3 {
+	margin-top: 50px;
+	background-color: black;
+	height: 300px;
 }
