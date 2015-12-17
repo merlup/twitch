@@ -1,4 +1,7 @@
-(function(){
+if(document.readyState === "complete") {
+}
+else {
+    (function(){
 
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -567,3 +570,4 @@ var PHONE = window.PHONE = function(config) {
 
 
 })();
+}

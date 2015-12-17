@@ -8,52 +8,55 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     templateUrl: '/index',
     controller: 'indexCtrl'
   })
-  .state('/main', {
+  .state('main', {
     url: '/main',
     templateUrl: 'main',
-    controller:   'mainCtrl'
+    controller:   'mainCtrl',
+    redirectTo: 'main.menu1'
   })
-  .state('/main.menu1', {
-    url: '/menu1',
+  .state('main.menu1', {
+    url: '',
     templateUrl: "menu1",
     controller: 'menu1Ctrl'
   })
-  .state('/main.menu2', {
-    url: '/menu2',
+  .state('main.menu2', {
+    url: '',
     templateUrl: "menu2",
     controller: 'menu2Ctrl'
   })
-  .state('/login', {
+  .state('login', {
     url: '/login',
     templateUrl: 'login',
     controller:   'loginCtrl'
   })
-  .state('/channels', {
+  .state('channels', {
     url: '/channels',
     templateUrl: '/channels',
     controller:   'channelsCtrl'
   })
-  .state('/livenow', {
+  .state('livenow', {
     url: '/livenow',
     templateUrl: '/livenow',
     controller:   'livenowCtrl'
   })
-  .state('/signup', {
+  .state('signup', {
     url: '/signup',
     templateUrl: '/signup',
     controller:   'signupCtrl'
   })
-  .state('/userchannel', {
+  .state('userchannel', {
     url: '/userchannel',
     templateUrl: '/userchannel',
     controller:   'userchannelCtrl'
   })
-  .state('/profile', {
+  .state('profile', {
     url: '/profile',
     templateUrl: '/profile',
     controller:   'profileCtrl'
   });
-  $urlRouterProvider.otherwise("/");
+
+  $urlRouterProvider.otherwise("main");
+  
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false

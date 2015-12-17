@@ -1,10 +1,10 @@
-<div ng-controller="mainCtrl" class="container-fluid">
+<div ng-controller="mainCtrl">
 		<h1 ng-model="controllers" class="headline" ng-repeat="message in messages">{{message}}</h1>
 	
 	<div class="section1 col-lg-12">
 		<div class="row">
-			<div class="sectmainbox col-mg-10 col-md-offset-2">
-				<div class="leftpanels col-lg-4">
+			<div class="sectmainbox col-md-8 col-md-offset-2">
+				<div class="leftpanels col-md-4">
 					<div class="col-md-4 usercam">
 						<p> user cam </p>
 					</div>
@@ -14,29 +14,31 @@
 						</div>
 					</div>
 				</div>
-				<div class="gameview col-lg-6">
+				<div class="gameview col-lg-8">
 					<p> game view </p>
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-8 maintopchan col-md-offset-3">
-				<div class="row">
-					<ul>
-						<li ng-model="controllers" ng-repeat="topchannel in topchannels" class='topchan col-md-2'>{{topchannel}}
-						</li>
-					</ul>
-				</div>
+			<div class=" maintopchan col-md-8 col-md-offset-2">
+				
+					<li ng-model="controllers" ng-repeat="topchannel in topchannels" class='topchan col-md-2'>{{topchannel}}
+					</li>
+				
 			</div>
 		</div>
+	</div>
+			
 	</div>
 
 	<div class="section2 col-md-12">
 		<div class="row">
 			<div class="section2nav col-md-offset-4 col-md-4">
-				<a ui-sref='/main.menu1'> menu1 </a> | <a ui-sref="/main.menu2"> menu2 </a>
-				<ui-view></ui-view>
+				<a ui-sref='main.menu1'> menu1 </a> | <a ui-sref="main.menu2"> menu2 </a>
+			</div>
+			<div class="col-md-12">
+			<ui-view></ui-view>
 			</div>
 		</div>
 

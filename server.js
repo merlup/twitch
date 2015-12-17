@@ -47,6 +47,9 @@ app.get('/menu1', function (req, res) {
 app.get('/menu2', function (req, res) {
 	res.sendFile(__dirname + '/client/www/templates/menu2.html');
 });
+app.get('/footer', function (req, res) {
+	res.sendFile(__dirname + '/client/www/templates/footer.html');
+});
 app.use(bodyParser.urlencoded({
   extended: true
 }));

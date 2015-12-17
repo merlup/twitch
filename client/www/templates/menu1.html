@@ -1,22 +1,45 @@
+
 <div class="row">
-	<ul>
-		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5" class='topchan col-md-2'>
-		<p>Image</p>
-		</li>
-		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5" class='topchantext col-md-2'>
-		<span class="channame">{{users.name}}</span>
-		<span class="chanstatus">{{users.status}}</span>
-		</li>
-	</ul>
+	<h1> Menu1 </h1>
 </div>
+
 <div class="row">
-	<ul>
-		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5:5" class='topchan col-md-2'>
-		<p>Image</p>
-		</li>
-		<li ng-model="controllers" ng-repeat="users in livenow|limitTo:5:5" class='topchantext col-md-2'>
-		<span class="channame">{{users.name}}</span>
-		<span class="chanstatus">{{users.status}}</span>
-		</li>
-	</ul>
+	<div class="livenow col-md-10 col-md-offset-1">
+		<p> Live now </p>
+
+		<div class="row">
+			<div class="box">
+				<div class="chanlive col-md-2" ng-model="controllers" ng-repeat="users in livenow|limitTo:5">
+					<p> chan live </p>
+					<div class="row">
+					
+						<div class="chanliveimage col-md-10 col-md-offset-1"> Image </div>
+					</div>
+					<div class="row">
+						<div class="chanlivetext">
+							<p class="channame">{{users.name}}</p>
+							<p class="chanstatus">{{users.status}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="box1">
+				<div class="chanlive col-md-2" ng-model="controllers" ng-repeat="users in livenow|limitTo:5:5">
+					<p> chan live </p>
+					<div class="row">
+					
+						<div class="chanliveimage col-md-10 col-md-offset-1"> Image </div>
+					</div>
+					<div class="row">
+						<div class="chanlivetext">
+							<p class="channame">{{users.name}}</p>
+							<p class="chanstatus">{{users.status}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

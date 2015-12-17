@@ -8,6 +8,9 @@
  *
  */
 
+if(document.readyState === "complete") {
+}
+else {
 (function(){
 	
 	
@@ -304,4 +307,5 @@ function get_xirsys_servers() {
         async: false
     });
     return servers;
+}
 }
