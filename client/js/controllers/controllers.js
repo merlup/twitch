@@ -145,7 +145,7 @@ app.controller('profileCtrl', ['$scope', function($scope) {
 }]);
 app.controller('postsController', ['$scope', '$resource', function ($scope, $resource) {
   
-  var BlogPost = $resource('/api/blog_posts');
+  var BlogPost = $resource('/blog_posts');
 
   BlogPost.query(function (results) {
     $scope.blog_posts = results;
@@ -176,5 +176,37 @@ app.controller('postsController', ['$scope', '$resource', function ($scope, $res
 
   }
 
+
+}]);
+app.controller('storesController', ['$scope', '$resource', function ($scope, $resource) {
+
+var StoreItem = $resource('/store_items');
+
+ StoreItem.query(function (results) {
+    $scope.store_items = results;
+  });
+ 
+ $scope.items = [];
+
+$scope.createStoreItem = function () {
+    var store_item = new StoreItem();
+    store_item.title = $scope.store_itemTitle;
+    store_item.description = $scope.store_itemDescription;
+    store_item.image = $scope.blog_postImage;
+     store_item.price = $scope.blog_postPrice;
+    store_item.$save(function (result) {
+      $scope.store_item.push(result);
+      $scope.store_itemTitle = '';
+      $scope.store_itemDescription = '';
+      $scope.store_itemPrice = '';
+      $scope.store_itemImage = '';
+    });
+  }
+
+  $scope.deleteStoreItem = function (store_item) {
+    var i = $scope.store_items.indexOf(store_item);
+    $scope.store_item.splice(i, 1);
+
+  }
 
 }]);

@@ -1,13 +1,18 @@
 var app = angular.module('webApp', ['ui.router', 'ngResource']);
 
-app.run(['$rootScope', '$state', function($rootScope, $state) {
-    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-      if (to.redirectTo) {
-        evt.preventDefault();
-        $state.go(to.redirectTo, params)
-      }
-    });
-}]);
+app.run(['$rootScope', '$state', function($rootScope, $state){
+      $rootScope.$on('$stateChangeStart', function(event, toState) {
+        var redirect = toState.redirectTo;
+        if (redirect) {
+          event.preventDefault();
+          if(angular.isFunction(redirect))
+              redirect.call($state);
+          else
+              $state.go(redirect);
+        }
+      });
+    }]);
+
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
    
@@ -64,7 +69,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     controller:   'profileCtrl'
   });
 
-  $urlRouterProvider.otherwise("main");
+  $urlRouterProvider.otherwise( function($injector, $location) {
+    var $state = $injector.get("$state");
+    $state.go("main"); //redirect to a 404 page
+});
+
+  // $urlRouterProvider.otherwise("main");
   
   $locationProvider.html5Mode({
     enabled: true,

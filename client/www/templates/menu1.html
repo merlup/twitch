@@ -1,12 +1,7 @@
-
 <div class="row">
-	<h1> Menu1 </h1>
-</div>
-
-<div class="row">
-	<div class="livenow col-md-10 col-md-offset-1">
-		<p> Live now </p>
-
+<p> menu1 </p>
+	<div class="leftarrow col-md-1"> < </div>
+	<div class="livewrapper col-md-10 ">
 		<div class="row">
 			<div class="box">
 				<div class="chanlive col-md-2" ng-model="controllers" ng-repeat="users in livenow|limitTo:5">
@@ -42,4 +37,5 @@
 			</div>
 		</div>
 	</div>
+	<div class="rightarrow col-md-1"> > </div>
 </div>
