@@ -1,11 +1,33 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
 
-module.exports = mongoose.model('blog_post', {
-  title: String,
-  description: String,
-  author: String,
-  tags_array: [String],
-  image: String,
-  date: Date
+  var BlogPostSchema = new Schema({
+  	title: {
+  		type: String,
+  		default: ''
+  	},
+  	description: {
+  		type: String
+  	},
+  	author: {
+  		type: String,
+  		default: ''
+  	},
+
+  	tags_array: {
+
+  		type: [String],
+  		default: ''
+  	},
+
+  	image: {
+  		type: String,
+  		default: ''
+  	},  	
+  	date:  {
+  		type: Date,
+  		default: ''
+  	}
 
 });
+module.exports = mongoose.model('blog_post', BlogPostSchema);

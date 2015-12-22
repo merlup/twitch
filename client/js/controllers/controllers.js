@@ -1,5 +1,3 @@
-var app = angular.module('webApp');
-
 app.controller('indexCtrl', ['$scope', function($scope) {
 	$scope.messages = [
 	'crazy'
@@ -23,7 +21,7 @@ app.controller('loginCtrl', ['$scope', function($scope) {
 	];
 }]);
 app.controller('signupCtrl', ['$scope', '$resource', function($scope, $resource) {
-	var User = $resource('/api/users');
+	var User = $resource('/users');
 
 	User.query(function (results) {
 		$scope.users = results;
@@ -32,17 +30,19 @@ app.controller('signupCtrl', ['$scope', '$resource', function($scope, $resource)
 	 $scope.users = []
 
 	$scope.createUser = function () {
-		var user = new User();
-		user.email = $scope.userEmail;
-		user.username = $scope.userUsername;
-		user.name = $scope.userName;
-		user.password = $scope.userPassword;
+		var user = new User({
+		email: this.email,
+		username: this.username,
+		name: this.name,
+		password: this.password
+	});
+
 		user.$save(function (result) {
 			$scope.users.push(result);
-			$scope.userUsername='';
-			$scope.userEmail='';
-			$scope.userName='';
-			$scope.userPassword='';
+			$scope.username ='',
+			$scope.email ='',
+			$scope.name ='',
+			$scope.password =''
 			console.log(result);
 		});
 	}
@@ -143,7 +143,24 @@ app.controller('profileCtrl', ['$scope', function($scope) {
 	'profile'
 	];
 }]);
-app.controller('postsController', ['$scope', '$resource', function ($scope, $resource) {
+app.factory('BlogPost', ['$resource',
+  function ($resource) {
+    return $resource('/blog_post/:blog_postId', {
+      blog_postId: '@_id'
+    }, {
+      update: {
+        method: 'PUT'
+      },
+      create: {
+      	method: 'POST'
+      },
+      delete: {
+      	method: 'DELETE'
+      }
+    });
+  }
+]);
+app.controller('postsController', ['$scope', '$resource', 'BlogPost',  '$http', function($scope, $resource, BlogPost) {
   
   var BlogPost = $resource('/blog_posts');
 
@@ -151,62 +168,128 @@ app.controller('postsController', ['$scope', '$resource', function ($scope, $res
     $scope.blog_posts = results;
   });
 
-  $scope.blog_posts = []
+  $scope.blog_posts = [];
 
   $scope.createBlogPost = function () {
-    var blog_post = new BlogPost();
-    blog_post.title = $scope.blog_postTitle;
-    blog_post.description = $scope.blog_postDescription;
-    blog_post.tags_array = $scope.blog_postTags;
-    blog_post.author = $scope.blog_postAuthor;
-    blog_post.image = $scope.blog_postImage;
+    var blog_post = new BlogPost({
+    	title: this.title,
+    	description: this.description,
+    	tags_array: this.tags_array,
+   		author: this.author,
+    	image: this.image
+    });
+    
     blog_post.$save(function (result) {
-      $scope.blog_posts.push(result);
-      $scope.blog_postTitle = '';
-      $scope.blog_postDescription = '';
-      $scope.blog_postAuthor = '';
-      $scope.blog_postTags = '';
-      $scope.blog_postImage = '';
+    	$scope.blog_posts.push(result);
+     	$scope.title = '',
+     	$scope.description = '',
+     	$scope.tags_array = '',
+     	$scope.author = '',
+     	$scope.image = ''
+     console.log(result);
     });
   }
 
   $scope.deleteBlogPost = function (blog_post) {
-    var i = $scope.blog_posts.indexOf(blog_post);
-    $scope.blog_posts.splice(i, 1);
-
+        for (var i in $scope.blog_posts) {
+          if ($scope.blog_posts[i] === blog_post) {
+            $scope.blog_posts.splice(i, 1);
+          }
+        }
   }
 
 
 }]);
+
 app.controller('storesController', ['$scope', '$resource', function ($scope, $resource) {
 
-var StoreItem = $resource('/store_items');
+	var StoreItem = $resource('/store_items');
 
- StoreItem.query(function (results) {
-    $scope.store_items = results;
-  });
+	StoreItem.query(function (results) {
+	  $scope.store_items = results;
+	});
  
- $scope.items = [];
+ 	$scope.store_items = []
 
-$scope.createStoreItem = function () {
-    var store_item = new StoreItem();
-    store_item.title = $scope.store_itemTitle;
-    store_item.description = $scope.store_itemDescription;
-    store_item.image = $scope.blog_postImage;
-     store_item.price = $scope.blog_postPrice;
-    store_item.$save(function (result) {
-      $scope.store_item.push(result);
-      $scope.store_itemTitle = '';
-      $scope.store_itemDescription = '';
-      $scope.store_itemPrice = '';
-      $scope.store_itemImage = '';
-    });
-  }
 
-  $scope.deleteStoreItem = function (store_item) {
-    var i = $scope.store_items.indexOf(store_item);
-    $scope.store_item.splice(i, 1);
+	$scope.createStoreItem = function () {
 
-  }
+	    var store_item = new StoreItem();
 
+	    store_item.title = $scope.store_itemTitle;
+	    store_item.description = $scope.store_itemDescription;
+	    store_item.image = $scope.store_itemImage;
+	    store_item.price = $scope.store_itemPrice;
+	    store_item.quantity = $scope.store_itemQuantity;
+	    store_item.$save(function (result) {
+	      $scope.store_items.push(result);
+	      $scope.store_itemTitle = '';
+	      $scope.store_itemDescription = '';
+	      $scope.store_itemPrice = '';
+	      $scope.store_itemImage = '';
+	      $scope.store_itemQuantity = '';
+	      console.log(result);
+	    });
+	}
+
+	$scope.deleteStoreItem = function (store_item) {
+	    var i = $scope.store_items.indexOf(store_item);
+	    $scope.store_item.splice(i, 1);
+	}
+
+}])
+app.controller('submerchantCtrl', ['$scope', '$resource', function ($scope, $resource) {
+
+	var SubMerchant = $resource('/submerchants');
+
+	SubMerchant.query(function (results) {
+	  $scope.submerchants = results;
+	});
+ 
+ 	$scope.submerchants = []
+
+
+	$scope.createSubMerchant = function () {
+
+	    var submerchant = new SubMerchant();
+
+	    submerchant.firstName = $scope.submerchantfirstName;
+	    submerchant.lastName = $scope.submerchantlastName;
+	    submerchant.email = $scope.submerchantEmail;
+	    submerchant.phone = $scope.submerchantPhone;
+	    submerchant.dateOfBirth = $scope.submerchantDateOfBirth;
+	    submerchant.ssn = $scope.submerchantSsn;
+	    submerchant.streetAddress = $scope.submerchantStreetAddress;
+	    submerchant.locality = $scope.submerchantLocality;
+	    submerchant.region = $scope.submerchantRegion;
+	    submerchant.postalCode = $scope.submerchantPostalCode;
+	    submerchant.$save(function (result) {
+	     	$scope.submerchants.push(result);
+	     	$scope.submerchantfirstName = '';
+			$scope.submerchantlastName = '';
+			$scope.submerchantEmail = '';
+			$scope.submerchantPhone = '';
+			$scope.submerchantDateOfBirth = '';
+			$scope.submerchantSsn = '';
+			$scope.submerchantStreetAddress = '';
+			$scope.submerchantLocality = '';
+			$scope.submerchantRegion = '';
+			$scope.submerchantPostalCode = '';
+			console.log(result);
+	    });
+
+	}
+
+	$scope.deleteStoreItem = function (store_item) {
+	    var i = $scope.store_items.indexOf(store_item);
+	    $scope.store_item.splice(i, 1);
+	}
+	
+	
 }]);
+	
+
+	
+
+
+

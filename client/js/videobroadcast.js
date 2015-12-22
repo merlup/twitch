@@ -1,7 +1,8 @@
-if(document.readyState === "complete") {
-}
-else {
-	var video_out  = document.getElementById("vid-box");
+
+
+
+
+var video_out  = document.getElementById("vid-box");
 var embed_code = document.getElementById("embed-code");
 var embed_demo = document.getElementById("embed-demo");
 var here_now   = document.getElementById('here-now');
@@ -101,4 +102,5 @@ function errWrap(fxn, form){
 		return false;
 	}
 }
-}
+var video_out  = document.getElementById("vid-box");
+

@@ -13,11 +13,25 @@
 					<div class='userchanleftpanel col-md-4'>
 						<div class="row">
 							<div class="videobroadcast">
+
 								<form name="streamForm" id="stream" action="#" ng-submit='submit()' onsubmit="return stream(this);">
-						    		<input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!" />
-						    		<button name="stream_submit" action="submit()"></button>
+ 		    					<input type="text" name="streamname" id="streamname" placeholder="Pick a stream name!">	<button name="stream_submit" action="submit()">Stream</button>
 								</form>
 								<div id="vid-box"><!-- Stream goes here -->
+								<video>
+								
+									<script type='text/javascript'>
+									$(document).ready( function() {
+								 var video = document.createElement('video');
+        							video.src    = URL.createObjectURL(phone.mystream);
+						        video.volume = 0.0;
+						        video.play();
+							    video.setAttribute( 'autoplay', 'autoplay' );
+							    video.setAttribute( 'data-number', phone.number() );
+								vid.appendChild(video);
+							});
+								</script>
+								</video>
 								</div>
 							</div>
 						</div>
@@ -38,6 +52,7 @@
 			<div class="row">
 				<div class="addpostbutton col-md-1">
 				<button type="button" class="btn" data-toggle="modal" data-target="#createPost">Create Post</button>
+				<!--  Create Post Modal -->
 					<div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
@@ -47,11 +62,12 @@
 					      </div>
 					      <div class="modal-body" ng-controller="postsController">
 								<div class="createpost">	
-									<form ng-submit="createBlogPost()">
-										<input type="text" placeholder="Blog_Post title" ng-model="blog_postTitle"></input>
-										<input type="text" placeholder="Blog_Post description" ng-model="blog_postDescription"></input>
-										<input type="text" placeholder="Blog_Post tags" ng-model="blog_postTags"></input> 
-										<input type="text" placeholder="Blog_Post author" ng-model="blog_postAuthor"></input>
+									<form class='form-group' ng-submit="createBlogPost()">
+										<input type="text" class="form-control" placeholder="Blog_Post title" ng-model="title"></input>
+										<input type="text" class="form-control" placeholder="Blog_Post description" ng-model="description"></input>
+										<input type="text" class="form-control" placeholder="Blog_Post tags" ng-model="tags"></input> 
+										<input type="text" class="form-control" placeholder="Blog_Post author" ng-model="author"></input>
+										<input type="text" class="form-control" placeholder="Blog_Post image" ng-model="image"></input>
 										<button type="submit"> Create </button>
 									</form>
 								</div>
@@ -63,97 +79,93 @@
 					  </div>
 					</div>
 				</div>
+				<!--  End Post Modal -->
 				<div class="userchanmid col-md-10">
-					<div class="channelblog col-md-6" ng-controller="postsController">
-						<div class="row">
-							<div class="aboutme col-md-12">
-								<h3> About Me </h3>
-							</div>
-							<div class="userabout col-md-12">
-								<p> This is the about me section. This is where the user describes the channel and the blog </p>
-							</div>
+					<div class="box1 col-md-6">
+						<div class="aboutme col-md-12">
+							<h3> About Me </h3>
 						</div>
-						<div class="row"> 
+						<div class="userabout col-md-12">
+							<p> This is the about me section. This is where the user describes the channel and the blog </p>
+						</div>
+						<div class="channelblog col-md-12" data-ng-controller="postsController">
 							<div class="blogposts  col-md-12">
 								<h3> latest posts </h3>
-								<li ng-repeat="blog_post in blog_posts">
-									<h1>{{blog_post.title}}</h1>
-									<p>{{blog_post.description}}</p>
-									<p>Tags: {{blog_post.tags_array.toString()}}</p>
-									<img ng-src="{{blog_post.image}}" />
-				            		<td><button ng-click="deleteBlogPost(blog_post)"> Delete {{blog_post.title}}</button></td>
-				        		</li>
-			        		</div>
-			        	</div>
-					</div>
-
-					<div class="userstore col-md-6" ng-controller="storesController">
-						<div class="row">
-							<div class="storeheadline col-md-12">
-								<h3> My Store </h3>
-							</div>
-							<div class="storeabout col-md-12">
-								<p> This is the user store. This is where the user can sell items on the channel </p>
+									<li class='blogpost' ng-repeat="blog_post in blog_posts">
+										<h1>{{blog_post.title}}</h1>
+										<p>{{blog_post.description}}</p>
+										<p>Tags: {{blog_post.tags_array.toString()}}</p>
+										<img ng-src="{{blog_post.image}}" />
+								        <td><button ng-click="deleteBlogPost(blog_post)"> Delete {{blog_post.title}}</button></td>
+								    </li>
 							</div>
 						</div>
-						<div class="row">
-							<div clas="storeitems col-md-12">
+					</div>
+						 
+					<div class="box2 col-md-6">
+						<div class="storeheadline col-md-12">
+							<h3> My Store </h3>
+						</div>
+						<div class="storeabout col-md-12">
+							<p> This is the user store. This is where the user can sell items on the channel </p>
+						</div>
+						<div class="userstore col-md-12" ng-controller="storesController">
+							<dic class="row">
+								<div class="storeitems col-md-12">
 									<h3> Latest Items </h3>
-								<div class='item col-md-12' ng-repeat='store_item in store_items'>
-									<div class='productimage col-md-4'> {{item.image}} </div>
-									<div class='col-md-4'>
-										<p> {{item.title}} </p><br>
-										<p> {{item.description}} </p><br>
-										<p> {{item.price}} </p>
-									</div>
-									<div class='col-md-2'>
-										<button class='btn'> Buy </button>
+									<div class='item col-md-12' ng-repeat='store_item in store_items'>
+										<div class='productimage col-md-4'>
+										 	{{store_item.image}} 
+										</div>
+										<div class='col-md-4'>
+											<p> {{store_item.title}} </p><br>
+											<p> {{store_item.description}} </p><br>
+											<p> {{store_item.price}} </p>
+											<p> {{store_item.quantity}} </p>
+										</div>
+										<div class='col-md-2'>
+											<a ui-sref='userchannel.cart'><button class='btn buybutton'> Buy </button></a>
+											<ui-view></ui-view>
+										</div>
 									</div>
 								</div>
-									
-								</div>
-							</div>
+							</dic>
 						</div>
 					</div>
+			</div>
 					<div class="additembutton col-md-1">
+					<!-- Create Shopping Item Modal -->
 						<button type="button" class="btn" data-toggle="modal" data-target="#createItem">Create Item</button>
-					<div class="modal fade" id="createItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="myModalLabel">Create a Item</h4>
-					      </div>
-					      <div class="modal-body" ng-controller="storesController">
-								<div class="createstoreitem">	
-									<form ng-submit="createStoreItem()">
-										<input type="text" placeholder="Store_Item title" ng-model="store_itemTitle"></input>
-										<input type="text" placeholder="Store_Item description" ng-model="store_itemDescription"></input>
-										<input type="text" placeholder="Store_Item image" ng-model="store_itemImage"></input> 
-										<input type="text" placeholder="Store_Item price" ng-model="store_itemPrice"></input>
-										<button type="submit"> Create </button>
-									</form>
-								</div>
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-				</div>
+						<div class="modal fade" id="createItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							    	<div class="modal-header">
+							        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        	<h4 class="modal-title" id="myModalLabel">Create a Item</h4>
+							      	</div>
+							    <div class="modal-body" ng-controller="storesController">
+									<div class="createstoreitem">	
+										<form ng-submit="createStoreItem()">
+											<input type="text" placeholder="Store_Item title" ng-model="store_itemTitle"></input>
+											<input type="text" placeholder="Store_Item description" ng-model="store_itemDescription"></input>
+											<input type="text" placeholder="Store_Item image" ng-model="store_itemImage"></input> 
+											<input type="text" placeholder="Store_Item price" ng-model="store_itemPrice"></input>
+											<input type="text" placeholder="Store_Item Quantity" ng-model="store_itemQuantity"></input>
+											<button type="submit"> Create </button>
+										</form>
+									</div>
+							    </div>
+						      	<div class="modal-footer">
+						        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						      	</div>
+						    </div>
+						</div>
+					<!-- End Shopping Item Modal -->
+					</div>	
 				</div>
 			</div>
-
-
-			</div>
 		</div>
-
-			
-        	
-			<br>
-		</div>
-
+	</div>
 
 
 <h3> Watch this channel </h3>

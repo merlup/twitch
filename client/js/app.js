@@ -1,4 +1,4 @@
-var app = angular.module('webApp', ['ui.router', 'ngResource']);
+var app = angular.module('webApp', ['ngResource', 'ui.router']);
 
 app.run(['$rootScope', '$state', function($rootScope, $state){
       $rootScope.$on('$stateChangeStart', function(event, toState) {
@@ -18,13 +18,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
    
   $stateProvider
   .state('/', {
-    url: '/index',
+    url: '',
     templateUrl: '/index',
     controller: 'indexCtrl'
   })
   .state('main', {
     url: '/main',
-    templateUrl: 'main',
+    templateUrl: '/main',
     controller:   'mainCtrl',
     redirectTo: 'main.menu1'
   })
@@ -63,6 +63,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     templateUrl: '/userchannel',
     controller:   'userchannelCtrl'
   })
+  .state('userchannel.cart', {
+    url: '.cart',
+    templateUrl: "cart",
+    controller: 'storescontroller'
+  })
   .state('profile', {
     url: '/profile',
     templateUrl: '/profile',
@@ -81,7 +86,41 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     requireBase: false
   });
 
+app.controller('postsController', ['$scope', '$resource', function ($scope, $resource) {
+  
+  var BlogPost = $resource('/blog_posts');
 
+  BlogPost.query(function (results) {
+    $scope.blog_posts = results;
+  });
+
+  $scope.blog_posts = []
+
+  $scope.createBlogPost = function () {
+    var blog_post = new BlogPost();
+    blog_post.title = $scope.blog_postTitle;
+    blog_post.description = $scope.blog_postDescription;
+    blog_post.tags_array = $scope.blog_postTags;
+    blog_post.author = $scope.blog_postAuthor;
+    blog_post.image = $scope.blog_postImage;
+    blog_post.$save(function (result) {
+      $scope.blog_posts.push(result);
+      $scope.blog_postTitle = '';
+      $scope.blog_postDescription = '';
+      $scope.blog_postAuthor = '';
+      $scope.blog_postTags = '';
+      $scope.blog_postImage = '';
+    });
+  }
+
+  $scope.deleteBlogPost = function (blog_post) {
+    var i = $scope.blog_posts.indexOf(blog_post);
+    $scope.blog_posts.splice(i, 1);
+
+  }
+
+
+}]);
   
   // if none of the above states are matched, use this as the fallback
 
