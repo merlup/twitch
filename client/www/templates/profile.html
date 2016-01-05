@@ -1,18 +1,18 @@
 <div ng-controller="profileCtrl">
-	<h1 ng-model="controllers" ng-repeat="message in messages">{{message}}</h1>
+	<h1> Profile </h1>
 </div>
 <div ng-controller='submerchantCtrl'>
-<form ng-submit="createSubMerchant()">
-	<input type="text" placeholder="Payment Detail first name" ng-model="submerchantfirstName"></input>
-	<input type="text" placeholder="Payment Detail last name" ng-model="submerchantlastName"></input>
-	<input type="text" placeholder="Payment Detail Email" ng-model="submerchantEmail"></input>
-	<input type="text" placeholder="Payment Detail Phone" ng-model="submerchantPhone"></input>
-	<input type="text" placeholder="Payment Detail Date of Birth" ng-model="submerchantDateOfBirth"></input>
-	<input type="text" placeholder="Payment Detail SSN" ng-model="submerchantSsn"></input>
-	<input type="text" placeholder="Payment Detail Street Address" ng-model="submerchantStreetAddress"></input>
-	<input type="text" placeholder="Payment Detail Locality" ng-model="submerchantLocality"></input>
-	<input type="text" placeholder="Payment Detail Region" ng-model="submerchantRegion"></input>
-	<input type="text" placeholder="Payment Detail PostalCode" ng-model="submerchantPostalCode"></input>
-	<button type="submit">Submit</button>
-</form>
+	<form class='form-group' ng-submit="createSubMerchant()">
+		<input class='form-control' type="text" placeholder="Payment Detail first name" ng-model="firstName"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail last name" ng-model="lastName"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Email" ng-model="email"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Phone" ng-model="phone"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Date of Birth" ng-model="dateOfBirth"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail SSN" ng-model="ssn"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Street Address" ng-model="streetAddress"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Locality" ng-model="locality"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail Region" ng-model="region"></input>
+		<input class='form-control' type="text" placeholder="Payment Detail PostalCode" ng-model="postalCode"></input>
+		<button type="submit">Submit</button>
+	</form>
 </div>

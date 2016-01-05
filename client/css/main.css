@@ -1,3 +1,4 @@
+/*Index Page */
 nav {
 	height: 80px;
 	text-align: center;
@@ -23,6 +24,11 @@ footer {
 .nomargin {
 	margin: 0 !important;
 }
+
+/*End of Index*/
+
+/*Main Page*/
+
 .headline {
 	text-align: center;
 }
@@ -72,19 +78,22 @@ footer {
 	text-align: center;
 	list-style-type: none;
 }
+
 .topchan {
 	background-color: #cccccc;
 	list-style-type: none;
 	height: 80px;
 	margin-top: 10px;
+	margin-left: 60px;
 	margin-bottom: 10px;
-	margin-left: 55px;
 }
 .topchan li {
 	display: inline-block;
 	margin: 10px;
+
 	list-style-type: none;
 }
+
 .livenow {
 	background-color: #8c8c8c;
 	height: 100%;
@@ -127,6 +136,7 @@ footer {
 	margin-left: 32px;
 	list-style-type: none;
 }
+
 
 .chanliveimage {
 	background-color: #cccccc;
@@ -198,7 +208,6 @@ footer {
 
 .footer1 {
 	margin-top: 50px;
-	margin-left: 50px;
 	background-color: #cccccc;
 	color: black;
 	height: 300px;
@@ -215,6 +224,11 @@ footer {
 	color: black;
 	height: 300px;
 }
+
+/*End of Main*/
+
+/*User Channel*/
+
 .userchansection1 {
 	background-color: #f2f2f2;
 	height: 100%;
@@ -345,3 +359,144 @@ footer {
 	bottom: 3vh;
 	right: 5vw;
 }
+
+/*End of User Channel*/
+
+/*Media Queries*/
+@media (max-width: 1225px ) {
+	.topchan {
+		margin-left: 50px;
+	}
+}
+@media (max-width: 991px ) {
+	.topchan {
+		margin-left: 65px;
+	}
+	.leftarrow {
+		margin-left: 25px;
+		margin-right: 20px;
+	}
+	.chanlive {
+		width: 160px;
+		margin-left: 5px;
+	}
+	.rightarrow {
+		margin-left: -50px;
+		
+	}
+}
+@media (max-width: 920px) {
+	.leftarrow {
+		margin-left: 5px;
+		margin-right: 0px;
+	}
+	.rightarrow {
+		margin-left: -15px;
+	}
+}
+@media (max-width: 886px) {
+	.leftarrow {
+		margin-left: 60px;
+		margin-right: 5px;
+	}
+	.rightarrow {
+		margin-left: -150px;
+	}
+}
+@media (max-width: 817px) {
+	.rightarrow {
+		margin-left: -100px;
+	}
+}
+@media (max-width: 779px ) {
+	.leftarrow {
+		margin-left: 30px;
+	}
+	.rightarrow {
+		margin-left: -70px;
+	}
+	.topchan {
+		margin-left: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+	.leftarrow {
+		margin-top: 0px;
+		margin-left: 30px;
+	}
+	.rightarrow {
+		margin-top: -40px;
+		margin-left: 100px;
+	}
+	.box {
+		margin-left: 200px;
+	}
+
+}
+@media (max-width: 683px) {
+	.box {
+		margin-left: 260px;
+	}
+}
+@media (max-width: 600px ) {
+	.topchan {
+		margin-left: 40px;
+	}
+	.box {
+		margin-left: 210px;
+	}
+}
+@media (max-width: 480px ) {
+	.topchan {
+		font-size: 10px;
+		margin-left: 30px;
+	}
+	.box {
+		margin-left: 160px;
+	}
+}
+@media (max-width: 402px) {
+	.section2nav {
+		font-size: 15px;
+	}
+	.box {
+		margin-left: 120px;
+	}
+}
+@media (max-width: 360px ) {
+	.topchan {
+		text-align: center;
+		font-size: 8px;
+		margin-left: 20px;
+	}
+	.box {
+		margin-left: 90px;
+	}
+}
+@media (max-width: 320px) {
+	.box {
+		margin-left: 60px;
+	}
+	.leftarrow {
+		margin-top: 0px;
+		margin-left: -10px;
+	}
+	.rightarrow {
+		margin-top: -40px;
+		margin-left: 60px;
+	}
+}
+
+@media (max-width: 767px) {
+	.chanlive {
+		width: 160px;
+		margin-left: 80px;
+	}
+}
+@media(max-width: 1151px) {
+	.chanlive {
+		margin-left: 25px;
+	}
+}
+/*End of Media Queries*/

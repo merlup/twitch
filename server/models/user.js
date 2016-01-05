@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
   var userSchema = new Schema({
-	  	name: { type: String, default: '', required: 'Add a title to your post'},
-	  	email: { type: String, default: '', required: 'Add a description to your post'},
-	  	username: { type: String, default: '', required: 'Add a author'},
-	  	password: { type: String, default: ''},  	
-	  	date:  { type: Date, default: ''}
+	  	name: String,
+	  	email: String,
+	  	username: String,
+	  	password: String,  	
+	  	date: Date
 	});
 var User = mongoose.model('User', userSchema);
 
