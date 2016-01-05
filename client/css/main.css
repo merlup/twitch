@@ -33,10 +33,11 @@ footer {
 	text-align: center;
 }
 .section1 {
+	min-height: 80vh;
 	background-color: #f2f2f2; 
 }
 .sectmainbox {
-	margin-top: 20px;
+	margin-top: 5%;
 	padding: 0;
 }
 
@@ -44,11 +45,11 @@ footer {
 	background-color: black;
 	text-align: center;
 	padding: 0px;
-	height: 400px;
+	min-height: 50vh;
 }
 
 .usercam {
-	height: 200px;
+	min-height: 25vh;
 	width: 100%;
 	background-color: #000000;
 	padding: 0px;
@@ -56,14 +57,14 @@ footer {
 }
 
 .chat {
-	height: 200px;
+	min-height: 25vh;
 	width: 100%;
 	background-color: #ffffff;
 	margin-left: 15px;
 }
 
 .gameview {
-	height: 400px;
+	min-height: 50vh;
 	background-color: #a9a9a9;
 	padding: 0;
 
@@ -130,7 +131,7 @@ footer {
 }
 .chanlive {
 	background-color: white;
-	height: 200px;
+	height: 300px;
 	margin-top: 30px;
 	margin-bottom: 20px;
 	margin-left: 32px;
@@ -140,7 +141,7 @@ footer {
 
 .chanliveimage {
 	background-color: #cccccc;
-	height: 100px;
+	height: 200px;
 }
 
 .chanlivetext {
